@@ -7,7 +7,7 @@ namespace MusicPlayer.ControlPanel.View
 {
     public abstract class AbstractMusicPlayerControlPanelView : MonoBehaviour,IMusicPlayerControlPanelView
     {
-        public abstract void Setup(MusicPlayerController controller);
+        public abstract void Setup(MusicPlayerController controller, GameObject anchorObject);
         public abstract IObservable<Unit> OnClickPlayButton { get; }
         public abstract IObservable<Unit> OnClickPauseButton { get; }
         public abstract IObservable<Unit> OnClickStopButton { get; }

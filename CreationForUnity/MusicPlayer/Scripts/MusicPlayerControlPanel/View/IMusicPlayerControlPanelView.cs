@@ -8,7 +8,7 @@ namespace MusicPlayer.ControlPanel.View
 {
     public interface IMusicPlayerControlPanelView
     {
-        void Setup(MusicPlayerController controller);
+        void Setup(MusicPlayerController controller, GameObject anchorObject);
         IObservable<Unit> OnClickPlayButton { get; }
         IObservable<Unit> OnClickPauseButton { get; }
         IObservable<Unit> OnClickStopButton { get; }

@@ -13,38 +13,38 @@ MonoBehaviour:
   m_Name: Music List
   m_EditorClassIdentifier: 
   Musics:
-  - Title: 
-    Singer: 
+  - Title: FREEDOM
+    Singer: Ado
     Composer: 
     LyricsWriter: 
     Music: {fileID: 8300000, guid: 479271904bffe48b088034c23e548958, type: 3}
     Lyrics: {fileID: 0}
-  - Title: 
-    Singer: 
+  - Title: "\u3046\u3063\u305B\u3047\u308F"
+    Singer: Ado
     Composer: 
     LyricsWriter: 
     Music: {fileID: 8300000, guid: 8000b33d0f6ed4a4f8b542e387921f4b, type: 3}
     Lyrics: {fileID: 0}
-  - Title: 
-    Singer: 
+  - Title: "\u30AE\u30E9\u30AE\u30E9"
+    Singer: Ado
     Composer: 
     LyricsWriter: 
     Music: {fileID: 8300000, guid: 385b26e4320d94acca87d5ec3b360cd5, type: 3}
     Lyrics: {fileID: 0}
-  - Title: 
-    Singer: 
+  - Title: "\u30DE\u30B6\u30FC\u30E9\u30F3\u30C9"
+    Singer: Ado
     Composer: 
     LyricsWriter: 
     Music: {fileID: 8300000, guid: 81949c30d086a4396967b3e063b95682, type: 3}
     Lyrics: {fileID: 0}
-  - Title: 
-    Singer: 
+  - Title: "\u30E9\u30C3\u30AD\u30FC\u30FB\u30D6\u30EB\u30FC\u30C8"
+    Singer: Ado
     Composer: 
     LyricsWriter: 
     Music: {fileID: 8300000, guid: 3a310c8fbb28f40ae9a55a2c05572bc4, type: 3}
     Lyrics: {fileID: 0}
-  - Title: 
-    Singer: 
+  - Title: "\u8E0A"
+    Singer: Ado
     Composer: 
     LyricsWriter: 
     Music: {fileID: 8300000, guid: 3b946bcd3dc9846d49786102cd2b4dae, type: 3}

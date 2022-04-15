@@ -131,6 +131,10 @@ namespace MusicPlayer.Core.AudioSystem
 
         public void SetMusicSequence(float value)
         {
+            if (audioSource == null || audioSource.clip == null)
+            {
+                return;
+            }
             value = Mathf.Clamp(value,0.0f,0.999f);//1.0で指定するとエラーを起こすので少し下げる
             audioSource.time = entity.Music.length * value;
         }

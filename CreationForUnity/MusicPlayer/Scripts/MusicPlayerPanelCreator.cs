@@ -1,34 +1,32 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using MusicPlayer.ControlPanel.View;
+﻿using MusicPlayer.ControlPanel.View;
 using MusicPlayer.Core.Controller;
-using MusicPlayer.Setting;
+using UniRx;
+using MusicPlayer.WorldObject;
 using UnityEngine;
 
 namespace MusicPlayer
 {
     public class MusicPlayerPanelCreator : MonoBehaviour
     {
+        [SerializeField] private MusicPlayerWorldObject musicPlayerWorldObject;
+        
         [SerializeField] private MusicPlayerController controller;
         //[SerializeField] private ControlPanelSettingScriptableObject controlPanelSetting;
         
         [SerializeField] private AbstractMusicPlayerControlPanelView controlPanelView;
 
-        #if UNITY_EDITOR
-        private void Start()
+        private void Awake()
         {
-            CreateControlPanel();
+            musicPlayerWorldObject.OnInteractive.Subscribe(_ => createControlPanel());
         }
-        #endif
 
-        public void CreateControlPanel()
+        private void createControlPanel()
         {
             //TODO 雑だけど一旦UIでしか作ってないので型を見る
             if (controlPanelView is UIMusicPlayerControlPanelView)
             {
                 var newControlPanelView = Instantiate<AbstractMusicPlayerControlPanelView>(controlPanelView);
-                newControlPanelView.Setup(controller);
+                newControlPanelView.Setup(controller,this.gameObject);
             }
         }
     }

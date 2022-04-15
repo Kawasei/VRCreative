@@ -1,6 +1,7 @@
 ﻿using System;
 using MusicPlayer.Core.AudioSystem;
 using MusicPlayer.Setting;
+using MusicPlayer.WorldObject;
 using UnityEngine;
 using UniRx;
 using Random = UnityEngine.Random;
@@ -10,7 +11,7 @@ namespace MusicPlayer.Core.Controller
     public class MusicPlayerController : MonoBehaviour
     {
         private const float playAnotherMusicSequenceBorder = 0.02f;
-
+        
         [SerializeField] private MusicListScriptableObject musicList;
         [SerializeField] private AudioSystemSettingScriptableObject settingObject;
         
@@ -33,22 +34,27 @@ namespace MusicPlayer.Core.Controller
 
             audioSystem = AudioSystemFactory.CreateAudioSystem(this, setting);
 
+            multipleDisposable.Disposable = audioSystem.OnMusicFinished.Subscribe(_ =>
+            {
+                onFinishedMusicSubject.OnNext(Unit.Default);
+            });
             multipleDisposable.Disposable = audioSystem.OnMusicFinished
                 .Subscribe(_ =>
                 {
-                    if (!setting.IsAutoNextMusic)
-                    {
-                        onFinishedMusicSubject.OnNext(Unit.Default);
-                        return;
-                    }
-
                     selectedMusicEntityIndex = setting.IsShuffle ? getShuffleMusicIndex() : getNextMusicIndex();
                     PlayMusic();
 
                 });
         }
+#region CntrolPanel
 
-        #region MusicPlay
+        private void openControlPanel()
+        {
+            
+        }
+#endregion
+
+#region MusicPlay
         public void PlayMusic()
         {
             if (!isExistAudioSystem)

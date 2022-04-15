@@ -1,7 +1,11 @@
 {
     "name": "AccompanimentPlayer",
     "references": [
-        "GUID:560b04d1a97f54a4e82edc0cbbb69285"
+        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
+        "GUID:b3ed9465ab522440ba79a63ac9a79655",
+        "GUID:949a031c49ac642db9e975a1cbb8ac69",
+        "GUID:e16271d0762c84e0b813f685d93c900d",
+        "GUID:9e7823ee445ff4a20b80956fe63bbda2"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

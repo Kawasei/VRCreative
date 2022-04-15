@@ -1,5 +1,6 @@
 ﻿using System;
 using MusicPlayer.Core.Controller;
+using UsefulCalsses;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,9 +42,11 @@ namespace MusicPlayer.ControlPanel.View
 
         [SerializeField] private Text musicInfoText;
 
+        [SerializeField] private WorldObjectPositionAnchor worldObjectPositionAnchor;
+
         private bool isSliderChangedByMethod;
 
-        public override void Setup(MusicPlayerController controller)
+        public override void Setup(MusicPlayerController controller,GameObject anchorObject)
         {
             OnClickPlayButton.Subscribe(_ => controller.PlayMusic()).AddTo(this);
             OnClickPauseButton.Subscribe(_ => controller.PauseMusic()).AddTo(this);
@@ -63,6 +66,8 @@ namespace MusicPlayer.ControlPanel.View
             controller.OnMusicFinished.Subscribe(_ =>
                 SetMusicInfo(null, null, null, null)).AddTo(this);
             controller.OnPlayingMusic.Subscribe(isPlaying => ActivePauseButton(isPlaying)).AddTo(this);
+            
+            worldObjectPositionAnchor.SetAnchorObject(anchorObject);
         }
 
         public override void ActivePauseButton(bool isActive)
