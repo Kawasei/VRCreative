@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MusicPlayer
 {
-    public class MusicPlayerPanelCreator : MonoBehaviour
+    public class MusicPlayerPanelController : MonoBehaviour
     {
         [SerializeField] private MusicPlayerWorldObject musicPlayerWorldObject;
         
@@ -17,17 +17,19 @@ namespace MusicPlayer
 
         private void Awake()
         {
-            musicPlayerWorldObject.OnInteractive.Subscribe(_ => createControlPanel());
+            controlPanelView.gameObject.SetActive(false);
+            
+            musicPlayerWorldObject.OnInteractive.Subscribe(_ => activeControlPanel());
         }
 
-        private void createControlPanel()
+        private void activeControlPanel()
         {
-            //TODO 雑だけど一旦UIでしか作ってないので型を見る
-            if (controlPanelView is UIMusicPlayerControlPanelView)
+            if (controlPanelView.gameObject.activeSelf)
             {
-                var newControlPanelView = Instantiate<AbstractMusicPlayerControlPanelView>(controlPanelView);
-                newControlPanelView.Setup(controller,this.gameObject);
+                return;
             }
+            controlPanelView.gameObject.SetActive(true);
+            controlPanelView.Setup(controller,this.gameObject);
         }
     }
 }
